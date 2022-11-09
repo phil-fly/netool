@@ -96,18 +96,18 @@ func TraceRoute4(host string) (string,error){
 			//src := cm.Src.String()
 			names, _ := net.LookupAddr(peer.String())
 			if link != nil {
-				results.WriteString(fmt.Sprintf("	[-] 网卡: %s Src: %s Dst: %s%+v 耗时: %v.", link.Attrs().Name,cm.Dst.String(),cm.Src.String(),names,rtt.String()))
+				results.WriteString(fmt.Sprintf("	[-] 网卡: %s Src: %s Dst: %s%+v 耗时: %v.\n", link.Attrs().Name,cm.Dst.String(),cm.Src.String(),names,rtt.String()))
 
 			}else{
-				results.WriteString(fmt.Sprintf("	[-] Src: %s Dst: %s%+v 耗时: %v.", cm.Dst.String(),cm.Src.String(),names,rtt.String()))
+				results.WriteString(fmt.Sprintf("	[-] Src: %s Dst: %s%+v 耗时: %v.\n", cm.Dst.String(),cm.Src.String(),names,rtt.String()))
 			}
 
 		case ipv4.ICMPTypeEchoReply:
 			names, _ := net.LookupAddr(peer.String())
 			if link != nil {
-				results.WriteString(fmt.Sprintf("	[+] 网卡: %s Src: %s Dst: %s%+v 耗时: %v.", link.Attrs().Name,cm.Dst.String(),cm.Src.String(),names,rtt.String()))
+				results.WriteString(fmt.Sprintf("	[+] 网卡: %s Src: %s Dst: %s%+v 耗时: %v.\n", link.Attrs().Name,cm.Dst.String(),cm.Src.String(),names,rtt.String()))
 			}else{
-				results.WriteString(fmt.Sprintf("	[+] Src: %s Dst: %s%+v 耗时: %v.", cm.Dst.String(),cm.Src.String(),names,rtt.String()))
+				results.WriteString(fmt.Sprintf("	[+] Src: %s Dst: %s%+v 耗时: %v.\n", cm.Dst.String(),cm.Src.String(),names,rtt.String()))
 			}
 
 			return results.String(),nil
@@ -117,9 +117,9 @@ func TraceRoute4(host string) (string,error){
 			}
 
 			if link != nil{
-				results.WriteString(fmt.Sprintf("	[-] 网卡: %s Src: %s Dst: %s 耗时: %v 无法访问目标主机.",link.Attrs().Name,cm.Dst.String(),cm.Src.String(),rtt.String()))
+				results.WriteString(fmt.Sprintf("	[-] 网卡: %s Src: %s Dst: %s 耗时: %v 无法访问目标主机.\n",link.Attrs().Name,cm.Dst.String(),cm.Src.String(),rtt.String()))
 			}else{
-				results.WriteString(fmt.Sprintf("	[-] Src: %s Dst: %s 耗时: %v 无法访问目标主机.",cm.Dst.String(),cm.Src.String(),rtt.String()))
+				results.WriteString(fmt.Sprintf("	[-] Src: %s Dst: %s 耗时: %v 无法访问目标主机.\n",cm.Dst.String(),cm.Src.String(),rtt.String()))
 			}
 
 			return results.String(),nil
